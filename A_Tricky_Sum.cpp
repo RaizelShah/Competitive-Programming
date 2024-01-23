@@ -1,32 +1,15 @@
 #include <bits/stdc++.h>
-#define int long long
 using namespace std;
-void solve()
+int main()
 {
-    int n;
-    cin >> n;
-    int sum = 0;
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (i & (i - 1) != 0)
-        {
-            sum = sum + i;
-        }
-        else
-        {
-            sum = sum - i;
-        }
-    }
-
-    cout << sum << endl;
-}
-signed main()
-{
-    int t;
+    long long int t, n, sum, p;
     cin >> t;
     while (t--)
     {
-        solve();
+        cin >> n;
+        p = log2(n);
+        p++;
+        sum = ((n * n + n) / 2) - (2 * (pow(2, p) - 1));
+        cout << sum << endl;
     }
-}
+} 
