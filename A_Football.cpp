@@ -3,52 +3,42 @@
 using namespace std;
 void solve()
 {
+    int n;
+    cin >> n;
     string s;
-    cin >> s;
-    int ctr = 1;
-
-    for(int i=0;i<s.length();i++)
+    if (n == 1)
     {
-        for(int j=i;j<s.length();j++)
-        {
-            if(s[j]==s[j+1])
-            {
-                ctr++;
-            }
-            else
-            {
-                break;
-            }
-        }
-        if(ctr>=7)
-        break;
-        else
-        ctr=1;
+        cin >> s;
+        cout << s;
     }
-
-    if(ctr>=7)
-    cout<<"YES";
     else
-    cout<<"NO";
-    /*int c = 1;
-    for (int i = 1; i <= s.length(); i++)
     {
-        if (s[i] == s[i - 1])
+        string arr[n];
+        int c1 = 0;
+        int c2 = 0;
+        for (int i = 0; i < n; i++)
         {
-            c++;
-            if (c >= 7)
+            cin >> s;
+            arr[i] = s;
+        }
+        string t = arr[0];
+        c1++;
+        string t2;
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] == t)
+                c1++;
+            else if (arr[i] != t)
             {
-                cout << "YES" << endl;
-                return;
+                c2++;
+                t2 = arr[i];
             }
-            //cout << c << " ";
         }
+        if (c1 > c2)
+            cout << t;
         else
-        {
-            c = 1;
-        }
+            cout << t2;
     }
-    cout << "NO" << endl;*/
 }
 signed main()
 {
