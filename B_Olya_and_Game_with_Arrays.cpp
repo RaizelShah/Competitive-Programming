@@ -6,7 +6,7 @@ void solve()
     int n;
     cin >> n;
 
-    int ans = 1e9;
+    int mn1 = 1e9, mn2=1e9;
 
     vector<vector<int>> v(n);
     for (int i = 0; i < n; i++)
@@ -18,21 +18,9 @@ void solve()
             int x;
             cin >> x;
             v[i].push_back(x);
-
-            ans = min(ans, x);
         }
     }
 
-    int pos;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < v[i].size(); j++)
-        {
-            if (v[i][j] == ans)
-                pos = i;
-        }
-    }
     for (int i = 0; i < n; i++)
     {
         sort(v[i].begin(), v[i].end());
@@ -40,12 +28,23 @@ void solve()
 
     for (int i = 0; i < n; i++)
     {
-        if (i != pos)
+        mn2 = min(v[i][1], mn2);
+        mn1 = min(v[i][0], mn1);
+    }
+    int ans = 0;
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (v[i][1] == mn2 and count == 0)
+        {
+            count++;
+        }
+        else
         {
             ans += v[i][1];
         }
     }
-
+    ans += mn1;
     cout << ans << endl;
 }
 signed main()
